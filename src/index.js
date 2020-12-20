@@ -6,7 +6,7 @@ const request = require('request');
 
 module.exports = function (settings={}) {
   return function (req, res, next) {
-    const baseUrl = `${req.protocol}://${req.get('Host')}`; // http://localhost:3000
+    const baseUrl = `${req.protocol}://${settings.subdomain ? `${settings.subdomain}.` : ''}${req.get('Host')}${settings.port ? `:${settings.port}` : ''}$`; // http://localhost:3000
     // console.log('baseUrl=', baseUrl)
 
     //
